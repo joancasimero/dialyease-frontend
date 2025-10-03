@@ -34,3 +34,36 @@
   display: flex;
   justify-content: center;
 }
+
+.connection-lost-animation {
+  width: 180px;
+  height: 180px;
+  border: 12px solid #e0e7ff;
+  border-top: 12px solid #263a99;
+  border-radius: 50%;
+  animation: connection-lost-spin 2s linear infinite;
+  position: relative;
+}
+
+.connection-lost-animation::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: connection-lost-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes connection-lost-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes connection-lost-pulse {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.5); }
+}
